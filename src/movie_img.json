@@ -1,0 +1,59 @@
+{
+  "moviesImg": [
+    {
+      "movieCd": "20228797",
+      "movieNm": "범죄도시4",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88104/88104_320.jpg"
+    },
+    {
+      "movieCd": "20203557",
+      "movieNm": "그녀가 죽었다",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88226/88226_320.jpg"
+    },
+    {
+      "movieCd": "20247783",
+      "movieNm": "혹성탈출: 새로운 시대",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88095/88095_320.jpg"
+    },
+    {
+      "movieCd": "20249507",
+      "movieNm": "극장판 하이큐!! 쓰레기장의 결전",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88214/88214_320.jpg"
+    },
+    {
+      "movieCd": "20249305",
+      "movieNm": "가필드 더 무비",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88183/88183_320.jpg"
+    },
+    {
+      "movieCd": "20236674",
+      "movieNm": "이프: 상상의 친구",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87957/87957_320.jpg"
+    },
+    {
+      "movieCd": "20231677",
+      "movieNm": "남은 인생 10년",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88126/88126_320.jpg"
+    },
+    {
+      "movieCd": "20249317",
+      "movieNm": "악마와의 토크쇼",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88207/88207_320.jpg"
+    },
+    {
+      "movieCd": "19950084",
+      "movieNm": "쇼생크 탈출",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000078/78753/78753_320.jpg"
+    },
+    {
+      "movieCd": "20236614",
+      "movieNm": "쿵푸팬더4",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87948/87948_320.jpg"
+    },
+    {
+      "movieCd": "20236653",
+      "movieNm": "퓨리오사: 매드맥스 사가",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88148/88148_320.jpg"
+    }
+  ]
+}
