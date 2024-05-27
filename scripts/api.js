@@ -252,14 +252,17 @@ let movieList = '';
 
 // 영화 목록에 리스트 삽입
 async function insertMovies() {
-  let list = await getMovies({ curPage: moviesPage, itemPerPage: 5 });
+  let list = await getMovies({ curPage: moviesPage, itemPerPage: 10 });
 
   list = list.filter((el) =>
     // el.prdtStatNm !== '촬영진행' &&
     // el.prdtStatNm !== '개봉준비' &&
     {
-      if (el.prdtStatNm !== '기타' && !el.repGenreNm.includes('성인물')) {
-        console.log(el);
+      if (
+        el.prdtStatNm !== '기타' &&
+        !el.repGenreNm.includes('성인물') &&
+        el.repNationNm !== '일본'
+      ) {
         return true;
       }
     }
