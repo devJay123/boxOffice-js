@@ -125,12 +125,13 @@ button#searchBtn {
 .movies_container .list_imgBox {
   margin: 0 auto;
   width: 180px;
+  height: 224px;
   border-radius: 10px;
   overflow: hidden;
 }
 .movies_container .list_imgBox img {
   width: 100%;
-  height: auto;
+  height: 250px;
 }
 .movies_container p {
   text-align: center;
@@ -171,7 +172,7 @@ button.on {
   }
   .movies_container .list_imgBox img {
     width: 100%;
-    height: auto;
+    height: 224px;
   }
 }
 
