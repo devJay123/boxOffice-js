@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>박스오피스</title>
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+
+    <script src="scripts/API_KEY.js"></script>
+    <script src="scripts/api.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="util_header">
+        <!-- <a href="" class="logo"> -->
+        <h1>BoxOffice</h1>
+        <!-- </a> -->
+        <a href="" class="profile"
+          ><img src="./src/account_circle24.png" alt=""
+        /></a>
+      </div>
+    </header>
+    <nav class="nav">
+      <button onclick="location.href='./theater.html'">영화 예매</button>
+    </nav>
+    <main>
+      <section class="slide searchBoxOffice">
+        <h2>궁금한 날짜의 박스오피스를 검색해보세요</h2>
+        <form>
+          <div class="searchBox">
+            <input type="date" id="date" name="date" />
+            <button
+              type="button"
+              id="searchBtn"
+              onclick="insertBoxOffice('search')"
+            >
+              검색
+            </button>
+          </div>
+        </form>
+        <ul class="slide_container"></ul>
+      </section>
+
+      <section class="slide boxOffice">
+        <div class="boxOffice_buttons">
+          <button class="today box_btn on" onclick="insertBoxOffice('today')">
+            일별
+          </button>
+          <button class="weekly box_btn" onclick="insertBoxOffice('weekly')">
+            주간
+          </button>
+        </div>
+        <h2>박스오피스, 지금 확인 해보세요</h2>
+        <ul class="slide_container">
+          <!-- 
+          <li>
+            <div>
+              <img src="" alt="" />
+            </div>
+            <div>
+              <p>수사반장 1958</p>
+              <p>드라마</p>
+              <span> 157 </span>
+            </div>
+          </li>
+           -->
+        </ul>
+      </section>
+
+      <section class="movie_list">
+        <h2>영화 목록</h2>
+        <ul class="movies_container">
+          <!-- 
+          <li>
+            <div>
+              <img src="${
+                el.imgUrl === ''
+                  ? 'http://www.myeongin.net/app/dubu_board/docs/imgs/d/lg_d16124045780126_%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A4%80%EB%B9%84%EC%A4%91.jpg'
+                  : el.imgUrl
+              }"  alt=""/>
+            </div>
+            <p>${el.movieNm}</p>
+            <p>${el.prdtStatNm}</p>
+          </li>
+          -->
+        </ul>
+        <div class="movies_loading">loading...</div>
+      </section>
+    </main>
+    <footer></footer>
+  </body>
+</html>

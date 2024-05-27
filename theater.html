@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>영화관</title>
+
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <style>
+      body {
+        font-size: 16px;
+      }
+      main {
+        width: 1000px;
+        border: 1px solid gray;
+      }
+      main h1 {
+        text-align: center;
+        font-size: 22px;
+        padding: 10px 0;
+      }
+      .wrap {
+        display: flex;
+        justify-content: center;
+      }
+      .seat_box {
+        padding: 0 10px;
+      }
+      .seat_box div {
+        margin: 10px 0;
+      }
+      .seat_box div.A span,
+      .seat_box div.B span {
+        border: 3px solid rgb(216, 216, 0);
+      }
+      .seat_box div.C span,
+      .seat_box div.D span {
+        border: 3px solid rgb(0, 182, 21);
+      }
+      .seat_box div.E span,
+      .seat_box div.F span,
+      .seat_box div.G span {
+        border: 3px solid rgb(246, 78, 0);
+      }
+      .seat_box div span {
+        display: inline-block;
+        margin: 0 5px;
+        width: 45px;
+        height: 45px;
+        line-height: 35px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        text-align: center;
+      }
+      .seat_box div span[data-selected] {
+        background-color: green;
+        color: white;
+      }
+      .select_container {
+        background-color: aqua;
+      }
+      .select_box {
+        margin-left: 100px;
+        width: 400px;
+        height: 300px;
+        background-color: antiquewhite;
+      }
+      .select_box h2 {
+        padding: 10px 10px 15px 10px;
+        font-size: 20px;
+      }
+      .select_box li {
+        padding: 0 0 10px 10px;
+      }
+    </style>
+
+    <script src="./scripts/theater.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>상영관 좌석표</h1>
+      <div class="wrap">
+        <div class="seat_box"></div>
+      </div>
+      <div class="select_container">
+        <div class="select_box">
+          <h2>좌석 선택</h2>
+          <ul>
+            <li class="adult_seat">
+              성인 : <button class="seat_btn minus">-</button>
+              <span class="num">0</span>
+              <button class="seat_btn plus">+</button>
+            </li>
+            <li class="child_seat">
+              청소년 : <button class="seat_btn minus">-</button>
+              <span class="num">0</span>
+              <button class="seat_btn plus">+</button>
+            </li>
+            <li class="uncomportable_seat">
+              장애인 : <button class="seat_btn minus">-</button>
+              <span class="num">0</span>
+              <button class="seat_btn plus">+</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <div class="modal"></div>
+  </body>
+</html>

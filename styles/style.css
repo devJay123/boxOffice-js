@@ -1,0 +1,200 @@
+a {
+  text-decoration: none;
+}
+
+body {
+  width: 480px;
+  font-size: 16px;
+}
+
+header {
+  height: 80px;
+  background-color: #495057;
+  /* background-color: rgb(68, 68, 68); */
+}
+header div.util_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+header a {
+  /* display: block; */
+}
+
+header .logo {
+  background-color: white;
+}
+.profile img {
+  width: 45px;
+  margin-right: 8px;
+}
+.util_header h1 {
+  font-family: 'Anton';
+  font-size: 40px;
+  margin-left: 20px;
+  color: white;
+}
+.nav {
+  padding: 20px 0 0 20px;
+}
+.nav button {
+  width: 80px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(213, 213, 213);
+}
+.slide ul.slide_container {
+  /* display: flex; */
+  overflow-x: auto; /* 가로 스크롤 생성 */
+  white-space: nowrap; /* 컨텐츠를 한 줄로 유지 */
+  margin: 15px 0;
+}
+.slide ul.slide_container li {
+  display: inline-block;
+  /* flex-shrink: 0; */
+  overflow: hidden;
+  width: 140px;
+  height: 270px;
+  font-size: 15px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  /* background-color: #495057; */
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.slide ul.slide_container li a {
+  color: black;
+  text-decoration: none;
+}
+
+.slide ul.slide_container li img {
+  width: 100%;
+  height: 200px;
+}
+.movie_txt {
+  padding: 5px;
+}
+.movie_txt p {
+  padding-bottom: 5px;
+}
+/*   .slide ul.slide1_container li p.movieNm {
+    padding: 4px;
+    min-height: 30px;
+    white-space: wrap;
+    word-break: break-all;
+  } */
+.searchBoxOffice {
+  padding: 20px 20px 0 20px;
+}
+.searchBox {
+  margin: 10px 0;
+}
+button#searchBtn {
+  width: 40px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(213, 213, 213);
+}
+.boxOffice {
+  padding: 0 20px 20px 20px;
+}
+.movie_list h2 {
+  margin: 0 20px;
+}
+.movies_container li {
+  padding: 10px 10px;
+}
+.movies_container li a {
+  color: black;
+}
+.movies_container .list_item {
+  margin: 0 auto;
+  padding: 10px 0;
+  width: 60%;
+  /* background-color: #495057; */
+  border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.movies_container .list_item p {
+  padding-top: 5px;
+}
+.movies_container .list_imgBox {
+  margin: 0 auto;
+  width: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.movies_container .list_imgBox img {
+  width: 100%;
+  height: auto;
+}
+.movies_container p {
+  text-align: center;
+}
+.boxOffice_buttons {
+  padding-bottom: 5px;
+}
+.box_btn {
+  width: 40px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(213, 213, 213);
+}
+button.on {
+  /* background-color: rgb(240, 183, 77); */
+  background-color: #f7b801;
+}
+
+/* 반응형 쿼리 480px~ 부터  */
+@media screen and (min-width: 481px) {
+  body {
+    width: 100%;
+  }
+  .movies_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .movies_container li {
+    width: 30%;
+  }
+  .movies_container li .list_item {
+    width: 100%;
+  }
+  .movies_container li .list_item .list_imgBox {
+    width: 90%;
+  }
+  .movies_container .list_imgBox img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .nav button {
+    width: 90px;
+    height: 35px;
+    font-size: 17px;
+  }
+  input#date {
+    height: 27px;
+  }
+  button#searchBtn {
+    width: 50px;
+    height: 30px;
+    font-size: 16px;
+  }
+  .box_btn {
+    width: 50px;
+    height: 30px;
+    font-size: 16px;
+  }
+  .movies_container li {
+    width: 20%;
+  }
+}

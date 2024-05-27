@@ -1,0 +1,75 @@
+body {
+  width: 480px;
+}
+
+header {
+  height: 70px;
+  background-color: #495057;
+}
+header div.util_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.util_header h1 {
+  font-family: 'Anton';
+  font-size: 40px;
+  margin-left: 20px;
+  color: white;
+}
+.profile img {
+  width: 45px;
+  margin-right: 8px;
+}
+.detail_wrap {
+  margin: 20px auto;
+  padding: 25px 0;
+  width: 80%;
+  border-radius: 10px;
+  /* background-color: black; */
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.img_box {
+  margin: 0px auto;
+  /* margin-top: 30px; */
+  margin-bottom: 10px;
+  width: 250px;
+}
+.img_box img {
+  width: 100%;
+  height: auto;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.txt_box {
+  display: flex;
+  justify-content: center;
+  margin: 0px auto;
+  width: 300px;
+  text-align: center;
+  color: black;
+}
+td {
+  padding: 5px;
+  line-height: 27px;
+  border-bottom: 1px solid black;
+}
+td:nth-child(1) {
+  width: 80px;
+  border-right: 1px solid black;
+}
+td:nth-child(2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+@media screen and (min-width: 481px) {
+  body {
+    width: 100%;
+  }
+}
