@@ -199,3 +199,15 @@ button.on {
     width: 20%;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  .movies_container li {
+    width: 18%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .movies_container li {
+    width: 12%;
+  }
+}
