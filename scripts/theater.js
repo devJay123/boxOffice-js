@@ -43,6 +43,8 @@ seatBtn.forEach((btn) => {
       if (seatNum > 0 && chooseSeats.length < allNum) {
         span.innerText = --seatNum;
         --allNum;
+      } else if (chooseSeats.length >= allNum) {
+        alert('좌석을 모두 선택하셨습니다.');
       }
     }
   });

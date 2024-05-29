@@ -56,6 +56,7 @@ async function drawMovieDetail(info) {
     '.' +
     info.openDt.substring(6, 8);
 
+  let noActor = '배우 정보가 없습니다.';
   let detailMsg = `
   <div class="detail_wrap">
     <div class="img_box">
@@ -72,9 +73,11 @@ async function drawMovieDetail(info) {
               <tr><td>영화감독</td><td>${
                 info.directors[0] ? info.directors[0].peopleNm : '미정'
               }</td></tr>
-              <tr><td>배우</td><td>${info.actors.map(
-                (el) => (el = el.peopleNm)
-              )}</td></tr>
+              <tr><td>배우</td><td>${
+                info.actors.map((el) => (el = el.peopleNm))[0]
+                  ? info.actors.map((el) => (el = el.peopleNm))[0]
+                  : '배우정보 미제공'
+              }</td></tr>
               <tr><td>장르</td><td>${info.genres.map(
                 (el) => (el = el.genreNm)
               )}</td></tr>
