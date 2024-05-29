@@ -47,6 +47,7 @@ header div.util_header {
   display: flex;
   justify-content: center;
   margin: 0px auto;
+  padding-top: 20px;
   width: 300px;
   text-align: center;
   color: black;

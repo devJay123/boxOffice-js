@@ -91,7 +91,7 @@ async function getDailyBoxOffice(date) {
         (movie) => `
                     <li>
                         <a href='./detail.html?movieCd=${movie.movieCd}'>
-                            <div>
+                            <div class="slide_imgBox">
                                 <img src="${
                                   movie.imgUrl === ''
                                     ? 'http://www.myeongin.net/app/dubu_board/docs/imgs/d/lg_d16124045780126_%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A4%80%EB%B9%84%EC%A4%91.jpg'
@@ -100,10 +100,10 @@ async function getDailyBoxOffice(date) {
                             </div>
                             <div class="movie_txt">
                                 <p class="movieNm">${movie.movieNm}</p>
-                                <p>${movie.genres
+                                <p class="movieGenre">${movie.genres
                                   .map((el) => el.genreNm)
                                   .join(',')}</p>
-                                <span>${movie.openDt}</span>
+                                <span>${movie.openDt} 개봉</span>
                             </div>
                         </a>
                     </li>
@@ -157,7 +157,7 @@ async function getWeeklyBoxOffice(date) {
         (movie) => `
                     <li>
                         <a href='./detail.html?movieCd=${movie.movieCd}'>
-                            <div>
+                            <div class="slide_imgBox">
                                 <img src="${
                                   movie.imgUrl === ''
                                     ? 'http://www.myeongin.net/app/dubu_board/docs/imgs/d/lg_d16124045780126_%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A4%80%EB%B9%84%EC%A4%91.jpg'
@@ -166,7 +166,7 @@ async function getWeeklyBoxOffice(date) {
                             </div>
                             <div class="movie_txt">
                                 <p class="movieNm">${movie.movieNm}</p>
-                                <p>${movie.genres
+                                <p class="movieGenre">${movie.genres
                                   .map((el) => el.genreNm)
                                   .join(',')}</p>
                                 <span>${movie.openDt}</span>
@@ -286,8 +286,8 @@ async function insertMovies() {
                             : el.imgUrl
                         }"  alt=""/>
                       </div>
-                      <p>${el.movieNm}</p>
-                      <p>${el.prdtStatNm}</p>
+                      <p class="movieNm">${el.movieNm}</p>
+                      <p class="movieGenre">${el.prdtStatNm}</p>
                       </a>
                     </div>
                   </li>`;
