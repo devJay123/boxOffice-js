@@ -3,8 +3,8 @@ body {
 }
 
 header {
-  height: 70px;
-  background-color: #495057;
+  height: 80px;
+  background-color: #495e57;
 }
 header div.util_header {
   display: flex;
@@ -16,7 +16,7 @@ header div.util_header {
   font-family: 'Anton';
   font-size: 40px;
   margin-left: 20px;
-  color: white;
+  color: #f5f7f8;
 }
 .profile img {
   width: 45px;

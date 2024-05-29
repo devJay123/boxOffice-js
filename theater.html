@@ -11,25 +11,36 @@
         font-size: 16px;
       }
       main {
-        width: 1000px;
+        /* width: 1000px; */
         border: 1px solid gray;
       }
-      main h1 {
+      .screen {
+        height: 50px;
+        line-height: 50px;
         text-align: center;
-        font-size: 22px;
-        padding: 10px 0;
+        color: white;
+        background-color: black;
+        font-size: 1.2rem;
+        font-weight: 600;
       }
-      .wrap {
+      .container {
         display: flex;
         justify-content: center;
+        padding: 20px;
       }
       .seat_box {
         padding: 0 10px;
       }
       .seat_box div {
+        display: flex;
+        flex-wrap: nowrap;
+        /* width: 100%; */
         margin: 10px 0;
       }
-      .seat_box div.A span,
+      .seat_box div span {
+        border: 1px solid #495e57;
+      }
+      /*     .seat_box div.A span,
       .seat_box div.B span {
         border: 3px solid rgb(216, 216, 0);
       }
@@ -41,13 +52,13 @@
       .seat_box div.F span,
       .seat_box div.G span {
         border: 3px solid rgb(246, 78, 0);
-      }
+      } */
       .seat_box div span {
         display: inline-block;
         margin: 0 5px;
         width: 45px;
         height: 45px;
-        line-height: 35px;
+        line-height: 40px;
         box-sizing: border-box;
         border-radius: 10px;
         text-align: center;
@@ -60,20 +71,43 @@
         background-color: gray;
       }
       .select_container {
-        background-color: aqua;
+        background-color: black;
+        color: white;
       }
       .select_box {
-        margin-left: 100px;
-        width: 400px;
-        height: 300px;
-        background-color: antiquewhite;
+        /* display: flex; */
+        /* margin-left: 100px; */
+        /* width: 400px; */
+        height: auto;
+        /* background-color: antiquewhite; */
       }
       .select_box h2 {
-        padding: 10px 10px 15px 10px;
+        /* padding: 10px 10px 15px 10px; */
+        text-align: center;
+        background-color: black;
+        line-height: 50px;
         font-size: 20px;
+        font-weight: 600;
+      }
+      .select_box ul {
+        display: flex;
+        justify-content: center;
+        padding: 15px;
       }
       .select_box li {
-        padding: 0 0 10px 10px;
+        /* padding: 0 0 10px 10px; */
+        margin-right: 40px;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
       }
     </style>
 
@@ -81,8 +115,9 @@
   </head>
   <body>
     <main>
-      <h1>상영관 좌석표</h1>
-      <div class="wrap">
+      <h1 class="sr-only">상영관 좌석표</h1>
+      <div class="screen">S C R E E N</div>
+      <div class="container">
         <div class="seat_box"></div>
       </div>
       <div class="select_container">

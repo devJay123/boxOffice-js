@@ -92,6 +92,9 @@ async function getDailyBoxOffice(date) {
                     <li>
                         <a href='./detail.html?movieCd=${movie.movieCd}'>
                             <div class="slide_imgBox">
+                                <div class="rank">${
+                                  moviesWithGenres.indexOf(movie) + 1
+                                }</div>
                                 <img src="${
                                   movie.imgUrl === ''
                                     ? 'http://www.myeongin.net/app/dubu_board/docs/imgs/d/lg_d16124045780126_%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A4%80%EB%B9%84%EC%A4%91.jpg'
@@ -158,6 +161,9 @@ async function getWeeklyBoxOffice(date) {
                     <li>
                         <a href='./detail.html?movieCd=${movie.movieCd}'>
                             <div class="slide_imgBox">
+                            <div class="rank">${
+                              moviesWithGenres.indexOf(movie) + 1
+                            }</div>
                                 <img src="${
                                   movie.imgUrl === ''
                                     ? 'http://www.myeongin.net/app/dubu_board/docs/imgs/d/lg_d16124045780126_%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A4%80%EB%B9%84%EC%A4%91.jpg'
@@ -252,14 +258,14 @@ let movieList = '';
 
 // 영화 목록에 리스트 삽입
 async function insertMovies() {
-  let list = await getMovies({ curPage: moviesPage, itemPerPage: 10 });
+  let list = await getMovies({ curPage: moviesPage, itemPerPage: 20 });
 
   list = list.filter((el) =>
     // el.prdtStatNm !== '촬영진행' &&
     // el.prdtStatNm !== '개봉준비' &&
     {
       if (
-        el.prdtStatNm !== '기타' &&
+        (el.prdtStatNm == '개봉' || el.prdtStatNm == '개봉예정') &&
         !el.repGenreNm.includes('성인물') &&
         el.repNationNm !== '일본'
       ) {

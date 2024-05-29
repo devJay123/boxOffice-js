@@ -5,7 +5,6 @@ const selectBox = document.querySelector('.select_box');
 const allSeatNum = selectBox.querySelectorAll('span.num');
 const seatBtn = document.querySelectorAll('.seat_btn');
 
-// Q
 function generateSeatHTML(row, col) {
   return `<span class="seat" data-row="${row}" data-col="${col}">${row}${
     col < 10 ? '0' + col : col
@@ -49,7 +48,6 @@ seatBtn.forEach((btn) => {
   });
 });
 
-// Q
 // seat를 click하면 발동되는 함수.
 // seat의 row와 col을 읽어오고, 'data-selected'함수를 부여함
 function clickSeat(event) {
@@ -59,7 +57,9 @@ function clickSeat(event) {
 
   let nextSibling = seat.nextElementSibling;
   let nextSiblings = [];
+
   for (let i = 0; i < allNum - 1 - chooseSeats.length; i++) {
+    if (nextSibling == null) break;
     nextSiblings.push(nextSibling);
     nextSibling = nextSibling.nextElementSibling;
   }
@@ -83,7 +83,6 @@ function clickSeat(event) {
   }
 }
 
-// Q
 // seatBox 안에 seat를 click 할 때 이벤트
 // a태그에 click event를 모두 하나씩 주는 것 보다, seatBox에 event 하나 주는 게
 // 성능적으로 더 좋음
@@ -136,12 +135,20 @@ function addSeatEvent(seatArr) {
 
       el.classList.add('hover');
 
+      // 마우스 올린 좌석 옆에 좌석들도 hover 주기
       let nextSibling = event.target.nextElementSibling;
       let nextSiblings = [];
+
+      if (nextSibling === null) {
+        return;
+      }
 
       for (let i = 0; i < allNum - 1 - chooseSeats.length; i++) {
         nextSiblings.push(nextSibling);
         nextSibling = nextSibling.nextElementSibling;
+        if (nextSibling === null) {
+          break;
+        }
       }
 
       nextSiblings.forEach((sibling) => {
@@ -156,9 +163,16 @@ function addSeatEvent(seatArr) {
       let nextSibling = event.target.nextElementSibling;
       let nextSiblings = [];
 
+      if (nextSibling === null) {
+        return;
+      }
+
       for (let i = 0; i < allNum - 1; i++) {
         nextSiblings.push(nextSibling);
         nextSibling = nextSibling.nextElementSibling;
+        if (nextSibling === null) {
+          break;
+        }
       }
 
       nextSiblings.forEach((sibling) => {
