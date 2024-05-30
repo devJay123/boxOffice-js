@@ -59,6 +59,21 @@
       "movieCd": "20249416",
       "movieNm": "청춘18x2 너에게로 이어지는 길",
       "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88181/88181_320.jpg"
+    },
+    {
+      "movieCd": "20234045",
+      "movieNm": "설계자",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88220/88220_320.jpg"
+    },
+    {
+      "movieCd": "20248879",
+      "movieNm": "드림 시나리오",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88168/88168_320.jpg"
+    },
+    {
+      "movieCd": "20249845",
+      "movieNm": "결속밴드 라이브 -항성-",
+      "imgUrl": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88237/88237_320.jpg"
     }
   ]
 }

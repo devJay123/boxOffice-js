@@ -53,6 +53,13 @@ header .logo {
   overflow-x: auto; /* 가로 스크롤 생성 */
   white-space: nowrap; /* 컨텐츠를 한 줄로 유지 */
   margin: 10px 0;
+
+  /* 부드럽게 보이도록 */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.slide ul.slide_container.loaded {
+  opacity: 1;
 }
 .slide ul.slide_container .slide_imgBox {
   position: relative;
@@ -147,10 +154,10 @@ button#searchBtn:hover {
   border-top: 1px solid #bababa;
 }
 .movie_list h2 {
-  height: 70px;
-  line-height: 70px;
+  height: 50px;
+  line-height: 50px;
   text-align: center;
-  padding-bottom: 5px;
+  /* padding-bottom: 5px; */
   font-size: 1.6rem;
   font-weight: 600;
   color: white;

@@ -189,12 +189,27 @@ async function getWeeklyBoxOffice(date) {
   }
 }
 
+let todayBoxOffice = '';
+let weekBoxOffice = '';
+
 // 박스오피스 날짜검색, 일별, 주간 리스트에 삽입
 async function insertBoxOffice(period) {
   if (period == 'today') {
-    boxOfficeContainer.innerHTML = await getDailyBoxOffice(targetDt);
+    // boxOfficeContainer.classList.remove('loaded');
+    // boxOfficeContainer.innerHTML = await getDailyBoxOffice(targetDt);
+
+    boxOfficeContainer.innerHTML = todayBoxOffice;
+    setTimeout(() => {
+      boxOfficeContainer.classList.add('loaded');
+    }, 100);
   } else if (period == 'weekly') {
-    boxOfficeContainer.innerHTML = await getWeeklyBoxOffice(weeklyTargetDt);
+    // boxOfficeContainer.classList.remove('loaded');
+    // boxOfficeContainer.innerHTML = await getWeeklyBoxOffice(weeklyTargetDt);
+
+    boxOfficeContainer.innerHTML = weekBoxOffice;
+    setTimeout(() => {
+      boxOfficeContainer.classList.add('loaded');
+    }, 100);
   } else if (period == 'search') {
     const searchInputDate = document.getElementById('date').value;
     if (!searchInputDate) {
@@ -202,7 +217,12 @@ async function insertBoxOffice(period) {
       return;
     }
     let searchDate = searchInputDate.split('-').join('');
+
+    searchBoxOfficeContainer.classList.remove('loaded');
     searchBoxOfficeContainer.innerHTML = await getDailyBoxOffice(searchDate);
+    setTimeout(() => {
+      searchBoxOfficeContainer.classList.add('loaded');
+    }, 80);
   }
 }
 
@@ -357,5 +377,14 @@ const observer = new IntersectionObserver(
 
 observer.observe(moviesLoading);
 
-insertBoxOffice('today');
-insertMovies();
+(async function () {
+  try {
+    todayBoxOffice = await getDailyBoxOffice(targetDt);
+    weekBoxOffice = await getWeeklyBoxOffice(weeklyTargetDt);
+
+    insertBoxOffice('today');
+    insertMovies();
+  } catch (error) {
+    console.error(error);
+  }
+})();

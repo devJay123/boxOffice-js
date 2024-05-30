@@ -15,8 +15,8 @@
         border: 1px solid gray;
       }
       .screen {
-        height: 50px;
-        line-height: 50px;
+        height: 70px;
+        line-height: 70px;
         text-align: center;
         color: white;
         background-color: black;
@@ -109,6 +109,11 @@
         white-space: nowrap;
         border-width: 0;
       }
+      .bill {
+        text-align: center;
+        font-size: 20px;
+        padding-bottom: 20px;
+      }
     </style>
 
     <script src="./scripts/theater.js" defer></script>
@@ -124,22 +129,34 @@
         <div class="select_box">
           <h2>좌석 선택</h2>
           <ul>
-            <li class="adult_seat">
-              성인 : <button class="seat_btn minus">-</button>
-              <span class="num">0</span>
-              <button class="seat_btn plus">+</button>
+            <li class="adult">
+              <div>
+                성인(10,000) : <button class="seat_btn minus">-</button>
+                <span class="num">0</span>
+                <button class="seat_btn plus">+</button>
+              </div>
+              <div class="fee">0 원</div>
             </li>
-            <li class="child_seat">
-              청소년 : <button class="seat_btn minus">-</button>
-              <span class="num">0</span>
-              <button class="seat_btn plus">+</button>
+            <li class="child">
+              <div>
+                청소년(7,000) : <button class="seat_btn minus">-</button>
+                <span class="num">0</span>
+                <button class="seat_btn plus">+</button>
+              </div>
+              <div class="fee">0 원</div>
             </li>
-            <li class="uncomportable_seat">
-              장애인 : <button class="seat_btn minus">-</button>
-              <span class="num">0</span>
-              <button class="seat_btn plus">+</button>
+            <li class="uncomportable">
+              <div>
+                장애인(4,000) : <button class="seat_btn minus">-</button>
+                <span class="num">0</span>
+                <button class="seat_btn plus">+</button>
+              </div>
+              <div class="fee">0 원</div>
             </li>
           </ul>
+          <div class="bill">
+            <p>총 금액 : <span class="fee_sum"></span></p>
+          </div>
         </div>
       </div>
     </main>

@@ -5,6 +5,7 @@ const selectBox = document.querySelector('.select_box');
 const allSeatNum = selectBox.querySelectorAll('span.num');
 const seatBtn = document.querySelectorAll('.seat_btn');
 
+// 화면에 좌석 그리기
 function generateSeatHTML(row, col) {
   return `<span class="seat" data-row="${row}" data-col="${col}">${row}${
     col < 10 ? '0' + col : col
@@ -26,29 +27,120 @@ seatBox.innerHTML = seats;
 
 let chooseSeats = [];
 
+// 요금을 저장하는 객체배열
+let fee = [
+  { seat: 'adult', price: 10000, num: 0 },
+  { seat: 'child', price: 7000, num: 0 },
+  { seat: 'uncomportable', price: 4000, num: 0 },
+];
+
+// 수정 후 (function을 쪼갬)
 // 좌석 개수를 선택하는 버튼의 이벤트
-let allNum = 0;
+let allSeatsCount = 0;
+
+const updateSeatDisplay = (span, seatCount) => {
+  span.innerText = seatCount;
+};
+
+const updateFeeDisplay = (feeDiv, feeIndex) => {
+  feeDiv.innerHTML =
+    (fee[feeIndex].num * fee[feeIndex].price).toLocaleString() + ' 원';
+};
+
+const updateTotalFeeDisplay = () => {
+  const feeSum = document.querySelector('.fee_sum');
+  feeSum.innerHTML =
+    fee.reduce((acc, cur) => acc + cur.num * cur.price, 0).toLocaleString() +
+    ' 원';
+};
+
+const handleSeatChange = (event) => {
+  let li = event.target.closest('li');
+  let feeDiv = li.querySelector('.fee');
+  let seat = li.className;
+
+  let span = event.target.parentElement.querySelector('.num');
+  let seatNum = parseInt(span.textContent);
+
+  let seatFeeIdx = fee.findIndex((el) => el.seat == seat);
+
+  if (event.target.classList.contains('plus')) {
+    seatNum++;
+    allSeatsCount++;
+    fee[seatFeeIdx].num++;
+
+    updateSeatDisplay(span, seatNum);
+    updateFeeDisplay(feeDiv, seatFeeIdx);
+    updateTotalFeeDisplay();
+  } else {
+    if (seatNum > 0 && chooseSeats.length < allSeatsCount) {
+      seatNum--;
+      allSeatsCount--;
+      fee[seatFeeIdx].num--;
+
+      updateSeatDisplay(span, seatNum);
+      updateFeeDisplay(feeDiv, seatFeeIdx);
+      updateTotalFeeDisplay();
+    } else if (chooseSeats.length >= allSeatsCount && allSeatsCount !== 0) {
+      alert('좌석을 제거할 수 없습니다.');
+    }
+  }
+};
 
 seatBtn.forEach((btn) => {
+  btn.addEventListener('click', handleSeatChange);
+});
+
+// 수정 전 버전
+/* 
+seatBtn.forEach((btn) => {
   btn.addEventListener('click', (event) => {
+    let li = event.target.closest('li');
+    let feeDiv = li.querySelector('.fee');
+    let seat = li.className;
+
     let span = event.target.parentElement.querySelector('.num');
     let seatNum = span.textContent;
 
+    let seatFeeIdx = fee.findIndex((el) => el.seat == seat);
+
+    let feeSum = document.querySelector('.fee_sum');
+
     if (event.target.classList.contains('plus')) {
       span.innerText = ++seatNum;
-      ++allNum;
+      ++allSeatsCount;
+      fee[seatFeeIdx].num++;
+
+      feeDiv.innerHTML =
+        (fee[seatFeeIdx].num * fee[seatFeeIdx].price).toLocaleString() + ' 원';
+
+      feeSum.innerHTML =
+        fee
+          .reduce((acc, cur) => acc + cur.num * cur.price, 0)
+          .toLocaleString() + ' 원';
     } else {
       // 숫자가 0 이상일 때만 빼기 가능
       // 이미 선택한 좌석 수 보다 적게 되도록 빼기 불가능
-      if (seatNum > 0 && chooseSeats.length < allNum) {
+      if (seatNum > 0 && chooseSeats.length < allSeatsCount) {
         span.innerText = --seatNum;
-        --allNum;
-      } else if (chooseSeats.length >= allNum) {
+        --allSeatsCount;
+        fee[seatFeeIdx].num--;
+
+        feeDiv.innerHTML =
+          (fee[seatFeeIdx].num * fee[seatFeeIdx].price).toLocaleString() +
+          ' 원';
+
+        feeSum.innerHTML =
+          fee
+            .reduce((acc, cur) => acc + cur.num * cur.price, 0)
+            .toLocaleString() + ' 원';
+      } else if (chooseSeats.length >= allSeatsCount && allSeatsCount !== 0) {
         alert('좌석을 모두 선택하셨습니다.');
       }
     }
   });
 });
+ */
 
 // seat를 click하면 발동되는 함수.
 // seat의 row와 col을 읽어오고, 'data-selected'함수를 부여함
@@ -60,7 +152,7 @@ function clickSeat(event) {
   let nextSibling = seat.nextElementSibling;
   let nextSiblings = [];
 
-  for (let i = 0; i < allNum - 1 - chooseSeats.length; i++) {
+  for (let i = 0; i < allSeatsCount - 1 - chooseSeats.length; i++) {
     if (nextSibling == null) break;
     nextSiblings.push(nextSibling);
     nextSibling = nextSibling.nextElementSibling;
@@ -92,12 +184,12 @@ seatBox.addEventListener('click', (event) => {
   let rtmp = event.target.dataset.row;
   let ctmp = event.target.dataset.col;
 
-  if (allNum == 0) {
+  if (allSeatsCount == 0) {
     event.stopPropagation();
     alert('인원을 선택해주세요');
     return;
   } else if (
-    allNum == chooseSeats.length &&
+    allSeatsCount == chooseSeats.length &&
     !chooseSeats.find((el) => el.row == rtmp && el.col == ctmp)
   ) {
     event.stopPropagation();
@@ -131,7 +223,11 @@ function addSeatEvent(seatArr) {
         }
       });
 
-      if (allNum == 0 || allNum <= chooseSeats.length || stop == 0) {
+      if (
+        allSeatsCount == 0 ||
+        allSeatsCount <= chooseSeats.length ||
+        stop == 0
+      ) {
         return;
       }
 
@@ -145,7 +241,7 @@ function addSeatEvent(seatArr) {
         return;
       }
 
-      for (let i = 0; i < allNum - 1 - chooseSeats.length; i++) {
+      for (let i = 0; i < allSeatsCount - 1 - chooseSeats.length; i++) {
         nextSiblings.push(nextSibling);
         nextSibling = nextSibling.nextElementSibling;
         if (nextSibling === null) {
@@ -169,7 +265,7 @@ function addSeatEvent(seatArr) {
         return;
       }
 
-      for (let i = 0; i < allNum - 1; i++) {
+      for (let i = 0; i < allSeatsCount - 1; i++) {
         nextSiblings.push(nextSibling);
         nextSibling = nextSibling.nextElementSibling;
         if (nextSibling === null) {
