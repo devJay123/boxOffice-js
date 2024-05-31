@@ -98,7 +98,7 @@ async function getDailyBoxOffice(date) {
                                 }</div>
                                 <img src="${
                                   movie.imgUrl === ''
-                                    ? 'https://cdn-icons-png.flaticon.com/512/3875/3875148.png'
+                                    ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019'
                                     : movie.imgUrl
                                 }" alt="" />
                             </div>
@@ -167,7 +167,7 @@ async function getWeeklyBoxOffice(date) {
                             }</div>
                                 <img src="${
                                   movie.imgUrl === ''
-                                    ? 'https://cdn-icons-png.flaticon.com/512/3875/3875148.png'
+                                    ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019'
                                     : movie.imgUrl
                                 }" alt="" />
                             </div>
@@ -309,7 +309,7 @@ async function insertMovies() {
                       <div class="list_imgBox">
                         <img src="${
                           el.imgUrl === ''
-                            ? 'https://cdn-icons-png.flaticon.com/512/3875/3875148.png'
+                            ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019'
                             : el.imgUrl
                         }"  alt=""/>
                       </div>
