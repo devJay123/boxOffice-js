@@ -381,10 +381,18 @@ observer.observe(moviesLoading);
 (async function () {
   try {
     todayBoxOffice = await getDailyBoxOffice(targetDt);
-    weekBoxOffice = await getWeeklyBoxOffice(weeklyTargetDt);
+    // weekBoxOffice = await getWeeklyBoxOffice(weeklyTargetDt);
 
     insertBoxOffice('today');
     insertMovies();
+  } catch (error) {
+    console.error(error);
+  }
+})();
+
+(async function () {
+  try {
+    weekBoxOffice = await getWeeklyBoxOffice(weeklyTargetDt);
   } catch (error) {
     console.error(error);
   }
