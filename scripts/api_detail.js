@@ -1,4 +1,7 @@
-const API_KEY = config.API_KEY;
+// const API_KEY = config.API_KEY;
+require('dotenv').config();
+const API_KEY = process.env.API_KEY;
+
 const url = new URL(window.location.href);
 const myParam = url.searchParams.get('movieCd');
 const movieDetail = document.querySelector('.movie_detail');
