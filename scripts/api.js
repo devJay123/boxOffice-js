@@ -98,7 +98,7 @@ async function getDailyBoxOffice(date) {
                                 }</div>
                                 <img src="${
                                   movie.imgUrl === ''
-                                    ? 'http://www.myeongin.net/app/dubu_board/docs/imgs/d/lg_d16124045780126_%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A4%80%EB%B9%84%EC%A4%91.jpg'
+                                    ? 'https://cdn-icons-png.flaticon.com/512/3875/3875148.png'
                                     : movie.imgUrl
                                 }" alt="" />
                             </div>
@@ -167,7 +167,7 @@ async function getWeeklyBoxOffice(date) {
                             }</div>
                                 <img src="${
                                   movie.imgUrl === ''
-                                    ? 'http://www.myeongin.net/app/dubu_board/docs/imgs/d/lg_d16124045780126_%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A4%80%EB%B9%84%EC%A4%91.jpg'
+                                    ? 'https://cdn-icons-png.flaticon.com/512/3875/3875148.png'
                                     : movie.imgUrl
                                 }" alt="" />
                             </div>
@@ -309,7 +309,7 @@ async function insertMovies() {
                       <div class="list_imgBox">
                         <img src="${
                           el.imgUrl === ''
-                            ? 'http://www.myeongin.net/app/dubu_board/docs/imgs/d/lg_d16124045780126_%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A4%80%EB%B9%84%EC%A4%91.jpg'
+                            ? 'https://cdn-icons-png.flaticon.com/512/3875/3875148.png'
                             : el.imgUrl
                         }"  alt=""/>
                       </div>
