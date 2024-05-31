@@ -1,6 +1,4 @@
-// const API_KEY = config.API_KEY;
-require('dotenv').config();
-const API_KEY = process.env.API_KEY;
+const API_KEY = config.API_KEY;
 
 const boxOfficeContainer = document.querySelector(
   '.boxOffice .slide_container'
