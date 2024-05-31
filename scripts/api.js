@@ -91,7 +91,10 @@ async function getDailyBoxOffice(date) {
         (movie) => `
                     <li>
                         <a href='./detail.html?movieCd=${movie.movieCd}'>
-                            <div>
+                            <div class="slide_imgBox">
+                                <div class="rank">${
+                                  moviesWithGenres.indexOf(movie) + 1
+                                }</div>
                                 <img src="${
                                   movie.imgUrl === ''
                                     ? 'http://www.myeongin.net/app/dubu_board/docs/imgs/d/lg_d16124045780126_%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A4%80%EB%B9%84%EC%A4%91.jpg'
@@ -100,10 +103,10 @@ async function getDailyBoxOffice(date) {
                             </div>
                             <div class="movie_txt">
                                 <p class="movieNm">${movie.movieNm}</p>
-                                <p>${movie.genres
+                                <p class="movieGenre">${movie.genres
                                   .map((el) => el.genreNm)
                                   .join(',')}</p>
-                                <span>${movie.openDt}</span>
+                                <span>${movie.openDt} 개봉</span>
                             </div>
                         </a>
                     </li>
@@ -157,7 +160,10 @@ async function getWeeklyBoxOffice(date) {
         (movie) => `
                     <li>
                         <a href='./detail.html?movieCd=${movie.movieCd}'>
-                            <div>
+                            <div class="slide_imgBox">
+                            <div class="rank">${
+                              moviesWithGenres.indexOf(movie) + 1
+                            }</div>
                                 <img src="${
                                   movie.imgUrl === ''
                                     ? 'http://www.myeongin.net/app/dubu_board/docs/imgs/d/lg_d16124045780126_%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A4%80%EB%B9%84%EC%A4%91.jpg'
@@ -166,7 +172,7 @@ async function getWeeklyBoxOffice(date) {
                             </div>
                             <div class="movie_txt">
                                 <p class="movieNm">${movie.movieNm}</p>
-                                <p>${movie.genres
+                                <p class="movieGenre">${movie.genres
                                   .map((el) => el.genreNm)
                                   .join(',')}</p>
                                 <span>${movie.openDt}</span>
@@ -183,12 +189,27 @@ async function getWeeklyBoxOffice(date) {
   }
 }
 
+let todayBoxOffice = '';
+let weekBoxOffice = '';
+
 // 박스오피스 날짜검색, 일별, 주간 리스트에 삽입
 async function insertBoxOffice(period) {
   if (period == 'today') {
-    boxOfficeContainer.innerHTML = await getDailyBoxOffice(targetDt);
+    // boxOfficeContainer.classList.remove('loaded');
+    // boxOfficeContainer.innerHTML = await getDailyBoxOffice(targetDt);
+
+    boxOfficeContainer.innerHTML = todayBoxOffice;
+    setTimeout(() => {
+      boxOfficeContainer.classList.add('loaded');
+    }, 100);
   } else if (period == 'weekly') {
-    boxOfficeContainer.innerHTML = await getWeeklyBoxOffice(weeklyTargetDt);
+    // boxOfficeContainer.classList.remove('loaded');
+    // boxOfficeContainer.innerHTML = await getWeeklyBoxOffice(weeklyTargetDt);
+
+    boxOfficeContainer.innerHTML = weekBoxOffice;
+    setTimeout(() => {
+      boxOfficeContainer.classList.add('loaded');
+    }, 100);
   } else if (period == 'search') {
     const searchInputDate = document.getElementById('date').value;
     if (!searchInputDate) {
@@ -196,7 +217,12 @@ async function insertBoxOffice(period) {
       return;
     }
     let searchDate = searchInputDate.split('-').join('');
+
+    searchBoxOfficeContainer.classList.remove('loaded');
     searchBoxOfficeContainer.innerHTML = await getDailyBoxOffice(searchDate);
+    setTimeout(() => {
+      searchBoxOfficeContainer.classList.add('loaded');
+    }, 80);
   }
 }
 
@@ -252,14 +278,14 @@ let movieList = '';
 
 // 영화 목록에 리스트 삽입
 async function insertMovies() {
-  let list = await getMovies({ curPage: moviesPage, itemPerPage: 10 });
+  let list = await getMovies({ curPage: moviesPage, itemPerPage: 20 });
 
   list = list.filter((el) =>
     // el.prdtStatNm !== '촬영진행' &&
     // el.prdtStatNm !== '개봉준비' &&
     {
       if (
-        el.prdtStatNm !== '기타' &&
+        (el.prdtStatNm == '개봉' || el.prdtStatNm == '개봉예정') &&
         !el.repGenreNm.includes('성인물') &&
         el.repNationNm !== '일본'
       ) {
@@ -286,8 +312,8 @@ async function insertMovies() {
                             : el.imgUrl
                         }"  alt=""/>
                       </div>
-                      <p>${el.movieNm}</p>
-                      <p>${el.prdtStatNm}</p>
+                      <p class="movieNm">${el.movieNm}</p>
+                      <p class="movieGenre">${el.prdtStatNm}</p>
                       </a>
                     </div>
                   </li>`;
@@ -351,5 +377,14 @@ const observer = new IntersectionObserver(
 
 observer.observe(moviesLoading);
 
-insertBoxOffice('today');
-insertMovies();
+(async function () {
+  try {
+    todayBoxOffice = await getDailyBoxOffice(targetDt);
+    weekBoxOffice = await getWeeklyBoxOffice(weeklyTargetDt);
+
+    insertBoxOffice('today');
+    insertMovies();
+  } catch (error) {
+    console.error(error);
+  }
+})();

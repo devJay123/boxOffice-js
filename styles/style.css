@@ -1,6 +1,9 @@
 a {
   text-decoration: none;
 }
+button:hover {
+  background-color: #f4ce14;
+}
 
 body {
   width: 480px;
@@ -9,7 +12,7 @@ body {
 
 header {
   height: 80px;
-  background-color: #495057;
+  background-color: #393e46;
   /* background-color: rgb(68, 68, 68); */
 }
 header div.util_header {
@@ -18,12 +21,8 @@ header div.util_header {
   align-items: center;
   height: 100%;
 }
-header a {
-  /* display: block; */
-}
-
 header .logo {
-  background-color: white;
+  background-color: #f5f7f8;
 }
 .profile img {
   width: 45px;
@@ -33,10 +32,10 @@ header .logo {
   font-family: 'Anton';
   font-size: 40px;
   margin-left: 20px;
-  color: white;
+  color: #f5f7f8;
 }
 .nav {
-  padding: 20px 0 0 20px;
+  padding: 20px 0 20px 20px;
 }
 .nav button {
   width: 80px;
@@ -45,18 +44,53 @@ header .logo {
   border-radius: 5px;
   background-color: rgb(213, 213, 213);
 }
+.nav button:hover {
+  background-color: #f4ce14;
+}
 .slide ul.slide_container {
   /* display: flex; */
+  height: auto;
   overflow-x: auto; /* 가로 스크롤 생성 */
   white-space: nowrap; /* 컨텐츠를 한 줄로 유지 */
-  margin: 15px 0;
+  margin: 10px 0;
+
+  /* 부드럽게 보이도록 */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.slide ul.slide_container.loaded {
+  opacity: 1;
+}
+.slide ul.slide_container .slide_imgBox {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.slide_imgBox .rank {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  color: #393e46;
+  text-align: center;
+  line-height: 28px;
+  font-weight: 600;
+  background-color: #f4ce14;
+}
+.slide ul.slide_container::-webkit-scrollbar {
+  display: none; /* Chrome , Safari , Opera */
 }
 .slide ul.slide_container li {
   display: inline-block;
   /* flex-shrink: 0; */
   overflow: hidden;
-  width: 140px;
-  height: 270px;
+  width: 190px;
+  height: 360px;
+  margin: 16px 10px;
+  padding: 10px 10px 0 15px;
+  margin-right: 5px;
   font-size: 15px;
   box-sizing: border-box;
   border-radius: 10px;
@@ -71,13 +105,23 @@ header .logo {
 
 .slide ul.slide_container li img {
   width: 100%;
-  height: 200px;
+  height: 228px;
 }
 .movie_txt {
-  padding: 5px;
+  padding: 10px;
 }
-.movie_txt p {
-  padding-bottom: 5px;
+.movie_txt span {
+  font-size: 14px;
+}
+.movieGenre {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.movieNm {
+  line-height: 1.6;
+  white-space: wrap;
+  /* margin-top: 5px; */
+  margin-bottom: 10px;
 }
 /*   .slide ul.slide1_container li p.movieNm {
     padding: 4px;
@@ -86,6 +130,7 @@ header .logo {
     word-break: break-all;
   } */
 .searchBoxOffice {
+  border-top: 1px solid #bababa;
   padding: 20px 20px 0 20px;
 }
 .searchBox {
@@ -98,29 +143,46 @@ button#searchBtn {
   border-radius: 5px;
   background-color: rgb(213, 213, 213);
 }
+
+button#searchBtn:hover {
+  background-color: #f4ce14;
+}
+
 .boxOffice {
-  padding: 0 20px 20px 20px;
+  margin: 0 auto;
+  padding: 20px 20px 20px 20px;
+  border-top: 1px solid #bababa;
 }
 .movie_list h2 {
-  margin: 0 20px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  /* padding-bottom: 5px; */
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: white;
+  box-sizing: border-box;
+  /* border-bottom: 10px solid #393e46; */
+  background-color: #393e46;
 }
 .movies_container li {
   padding: 10px 10px;
+  margin: 16px 16px;
 }
 .movies_container li a {
   color: black;
 }
 .movies_container .list_item {
   margin: 0 auto;
-  padding: 10px 0;
-  width: 60%;
+  padding: 20px 10px;
+  width: 50%;
   /* background-color: #495057; */
   border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
-.movies_container .list_item p {
-  padding-top: 5px;
+.movies_container .list_item .movieNm {
+  padding: 13px 7px 3px 7px;
 }
 .movies_container .list_imgBox {
   margin: 0 auto;
@@ -137,7 +199,7 @@ button#searchBtn {
   text-align: center;
 }
 .boxOffice_buttons {
-  padding-bottom: 5px;
+  padding-bottom: 15px;
 }
 .box_btn {
   width: 40px;
@@ -148,7 +210,7 @@ button#searchBtn {
 }
 button.on {
   /* background-color: rgb(240, 183, 77); */
-  background-color: #f7b801;
+  background-color: #f4ce14;
 }
 
 /* 반응형 쿼리 480px~ 부터  */
@@ -158,6 +220,7 @@ button.on {
   }
   .movies_container {
     display: flex;
+    /* justify-content: space-around; */
     justify-content: center;
     flex-wrap: wrap;
   }
@@ -208,6 +271,19 @@ button.on {
 
 @media screen and (min-width: 1440px) {
   .movies_container li {
-    width: 12%;
+    width: 16%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  main {
+    /* width: 90%; */
+    /* margin: 0 auto; */
+  }
+  .movies_container li {
+    width: 14%;
+  }
+  .movie_list h2 {
+    /* margin: 0 40px; */
   }
 }
