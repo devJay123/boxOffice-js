@@ -11,24 +11,13 @@ const moviesContainer = document.querySelector('.movies_container');
 const moviesLoading = document.querySelector('.movies_loading');
 
 let today = new Date();
-let year = today.getFullYear();
-let month = today.getMonth() + 1;
-let date = today.getDate();
-let targetDt =
-  '' +
-  year +
-  (month < 10 ? '0' : '') +
-  month +
-  (date < 10 ? '0' : '') +
-  (Number(date) - 1);
 
-let weeklyTargetDt =
-  '' +
-  year +
-  (month < 10 ? '0' : '') +
-  month +
-  (date < 10 ? '0' : '') +
-  (date - 7);
+let targetDt = today.toISOString().split('T')[0].split('-').join('');
+
+const lastDay = new Date(today);
+lastDay.setDate(lastDay.getDate() - 7);
+
+let weeklyTargetDt = lastDay.toISOString().split('T')[0].split('-').join('');
 
 let todayBoxOfficeMsg = '';
 let weeklyBoxOfficeMsg = '';
@@ -152,6 +141,7 @@ async function getWeeklyBoxOffice(date) {
       throw new Error('Network response was not ok');
     }
     const data = await response.json();
+
     let result = data.boxOfficeResult.weeklyBoxOfficeList;
 
     let moviesWithGenres = await getMoviesInfoImg(result);
