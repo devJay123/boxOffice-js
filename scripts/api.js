@@ -11,6 +11,7 @@ const moviesContainer = document.querySelector('.movies_container');
 const moviesLoading = document.querySelector('.movies_loading');
 
 let today = new Date();
+today.setDate(today.getDate() - 1);
 
 let targetDt = today.toISOString().split('T')[0].split('-').join('');
 
