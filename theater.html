@@ -75,6 +75,7 @@
         color: white;
       }
       .select_box {
+        position: relative;
         /* display: flex; */
         /* margin-left: 100px; */
         /* width: 400px; */
@@ -114,6 +115,13 @@
         font-size: 20px;
         padding-bottom: 20px;
       }
+      .reset {
+        position: absolute;
+        top: 7%;
+        left: 56%;
+        height: 30px;
+        border-radius: 15px;
+      }
     </style>
 
     <script src="./scripts/theater.js" defer></script>
@@ -128,6 +136,7 @@
       <div class="select_container">
         <div class="select_box">
           <h2>좌석 선택</h2>
+          <button class="reset">모두 초기화</button>
           <ul>
             <li class="adult">
               <div>
