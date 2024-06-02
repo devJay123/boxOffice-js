@@ -47,8 +47,8 @@ const updateFeeDisplay = (feeDiv, feeIndex) => {
     (fee[feeIndex].num * fee[feeIndex].price).toLocaleString() + ' 원';
 };
 
+const feeSum = document.querySelector('.fee_sum');
 const updateTotalFeeDisplay = () => {
-  const feeSum = document.querySelector('.fee_sum');
   feeSum.innerHTML =
     fee.reduce((acc, cur) => acc + cur.num * cur.price, 0).toLocaleString() +
     ' 원';
@@ -281,3 +281,33 @@ function addSeatEvent(seatArr) {
 }
 
 addSeatEvent(seatArr);
+
+// 모두 초기화 버튼
+// chooseSeats = [];
+// allSeatsCount = 0;
+// span.num 모두 0으로
+// div.fee 모두 0원으로
+// span.fee_sum 0원으로
+// 좌석 선택 초기화
+// .seat[data-selected] 에서 data-selected 속성 삭제하기
+
+const resetBtn = document.querySelector('.reset');
+const divFees = document.querySelectorAll('.fee');
+
+resetBtn.addEventListener('click', () => {
+  // seat.num 모두 0으로
+  allSeatNum.forEach((el) => (el.innerText = 0));
+  // div.fee 모두 0으로
+  divFees.forEach((el) => (el.innerText = '0 원'));
+  // span.fee_sum 0원으로
+  feeSum.innerText = '0 원';
+
+  chooseSeats = [];
+  allSeatsCount = 0;
+
+  fee.forEach((item) => (item.num = 0));
+
+  seatArr.forEach((el) => {
+    el.removeAttribute('data-selected');
+  });
+});
