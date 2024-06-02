@@ -63,7 +63,7 @@ async function drawMovieDetail(info) {
     <div class="img_box">
         <img src="${
           img.imgUrl === ''
-            ? 'http://www.myeongin.net/app/dubu_board/docs/imgs/d/lg_d16124045780126_%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A4%80%EB%B9%84%EC%A4%91.jpg'
+            ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019'
             : img.imgUrl
         }" alt="">
     </div>
