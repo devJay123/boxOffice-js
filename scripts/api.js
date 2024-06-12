@@ -73,6 +73,12 @@ async function getDailyBoxOffice(date) {
       throw new Error('Network response was not ok');
     }
     const data = await response.json();
+
+    if (data == null) {
+      alert('조회 결과가 없습니다.');
+      return;
+    }
+
     let result = data.boxOfficeResult.dailyBoxOfficeList;
 
     let moviesWithGenres = await getMoviesInfoImg(result);
@@ -143,6 +149,11 @@ async function getWeeklyBoxOffice(date) {
     }
     const data = await response.json();
 
+    if (data == null) {
+      alert('조회 결과가 없습니다.');
+      return;
+    }
+
     let result = data.boxOfficeResult.weeklyBoxOfficeList;
 
     let moviesWithGenres = await getMoviesInfoImg(result);
@@ -167,7 +178,7 @@ async function getWeeklyBoxOffice(date) {
                                 <p class="movieGenre">${movie.genres
                                   .map((el) => el.genreNm)
                                   .join(',')}</p>
-                                <span>${movie.openDt}</span>
+                                <span>${movie.openDt} 개봉</span>
                             </div>
                         </a>
                     </li>
@@ -204,10 +215,18 @@ async function insertBoxOffice(period) {
     }, 100);
   } else if (period == 'search') {
     const searchInputDate = document.getElementById('date').value;
+    let selectDate = new Date(searchInputDate);
+
     if (!searchInputDate) {
       alert('날짜를 입력하세요');
       return;
+    } else if (selectDate > today) {
+      alert('1일전까지만 조회가 가능합니다.');
+      return;
     }
+
+    console.log(typeof searchInputDate);
+
     let searchDate = searchInputDate.split('-').join('');
 
     searchBoxOfficeContainer.classList.remove('loaded');
