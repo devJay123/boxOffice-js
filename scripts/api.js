@@ -313,21 +313,24 @@ async function insertMovies() {
   const items = await Promise.all(promises);
 
   items.forEach((el) => {
-    movieList += `<li>
-                  <a href='./detail.html?movieCd=${el.movieCd}'>
-                    <div class="list_item">
-                      <div class="list_imgBox">
-                        <img src="${
-                          el.imgUrl === ''
-                            ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019'
-                            : el.imgUrl
-                        }"  alt=""/>
-                      </div>
-                      <p class="movieNm">${el.movieNm}</p>
-                      <p class="movieGenre">${el.prdtStatNm}</p>
-                      </a>
-                    </div>
-                  </li>`;
+    movieList += `
+    <li>
+      <a href='./detail.html?movieCd=${el.movieCd}'>
+        <div class="list_item">
+          <div class="list_imgBox">
+            <img src="${
+              el.imgUrl === ''
+                ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019'
+                : el.imgUrl
+            }"  alt=""/>
+          </div>
+          <div class="txt">
+            <p class="movieNm">${el.movieNm}</p>
+            <p class="movieGenre">${el.prdtStatNm}</p>
+          </div>  
+        </div>
+      </a>
+    </li>`;
   });
 
   moviesContainer.innerHTML = movieList;
