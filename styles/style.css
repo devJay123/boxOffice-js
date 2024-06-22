@@ -16,6 +16,7 @@ header {
   /* background-color: rgb(68, 68, 68); */
 }
 header div.util_header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,6 +36,8 @@ header .logo {
   color: #f5f7f8;
 }
 .nav {
+  position: absolute;
+  right: 70px;
   padding: 20px 0 20px 20px;
 }
 .nav button {
@@ -42,10 +45,10 @@ header .logo {
   height: 25px;
   border: none;
   border-radius: 5px;
-  background-color: rgb(213, 213, 213);
+  background-color: #f4ce14;
 }
 .nav button:hover {
-  background-color: #f4ce14;
+  /* background-color: #f4ce14; */
 }
 .slide ul.slide_container {
   /* display: flex; */
@@ -91,7 +94,7 @@ header .logo {
   margin: 16px 10px;
   padding: 10px 10px 0 15px;
   margin-right: 5px;
-  font-size: 15px;
+  font-size: 16px;
   box-sizing: border-box;
   border-radius: 10px;
   /* background-color: #495057; */
@@ -132,13 +135,17 @@ header .logo {
 .searchBoxOffice {
   border-top: 1px solid #bababa;
   padding: 20px 20px 0 20px;
+  text-align: center;
 }
 .searchBox {
   margin: 10px 0;
 }
+input#date {
+  height: 23px;
+}
 button#searchBtn {
-  width: 40px;
-  height: 25px;
+  width: 50px;
+  height: 23px;
   border: none;
   border-radius: 5px;
   background-color: rgb(213, 213, 213);
@@ -147,7 +154,6 @@ button#searchBtn {
 button#searchBtn:hover {
   background-color: #f4ce14;
 }
-
 .boxOffice {
   margin: 0 auto;
   padding: 20px 20px 20px 20px;
@@ -182,7 +188,7 @@ button#searchBtn:hover {
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .movies_container .list_item .movieNm {
-  padding: 13px 7px 3px 7px;
+  /* padding: 13px 7px 3px 7px; */
 }
 .movies_container .list_imgBox {
   margin: 0 auto;
@@ -201,8 +207,12 @@ button#searchBtn:hover {
 .boxOffice_buttons {
   padding-bottom: 15px;
 }
+.boxOffice_buttons h2 {
+  display: inline-block;
+  font-size: 20px;
+}
 .box_btn {
-  width: 40px;
+  width: 50px;
   height: 25px;
   border: none;
   border-radius: 5px;
@@ -211,79 +221,4 @@ button#searchBtn:hover {
 button.on {
   /* background-color: rgb(240, 183, 77); */
   background-color: #f4ce14;
-}
-
-/* 반응형 쿼리 480px~ 부터  */
-@media screen and (min-width: 481px) {
-  body {
-    width: 100%;
-  }
-  .movies_container {
-    display: flex;
-    /* justify-content: space-around; */
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .movies_container li {
-    width: 30%;
-  }
-  .movies_container li .list_item {
-    width: 100%;
-  }
-  .movies_container li .list_item .list_imgBox {
-    width: 90%;
-  }
-  .movies_container .list_imgBox img {
-    width: 100%;
-    height: 224px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .nav button {
-    width: 90px;
-    height: 35px;
-    font-size: 17px;
-  }
-  input#date {
-    height: 27px;
-  }
-  button#searchBtn {
-    width: 50px;
-    height: 30px;
-    font-size: 16px;
-  }
-  .box_btn {
-    width: 50px;
-    height: 30px;
-    font-size: 16px;
-  }
-  .movies_container li {
-    width: 20%;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .movies_container li {
-    width: 18%;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .movies_container li {
-    width: 16%;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  main {
-    /* width: 90%; */
-    /* margin: 0 auto; */
-  }
-  .movies_container li {
-    width: 14%;
-  }
-  .movie_list h2 {
-    /* margin: 0 40px; */
-  }
 }
