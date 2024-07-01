@@ -1,4 +1,9 @@
 # mini-project-js
+  
+개인 프로젝트로 진행했으며, vanila javascript로 fetch api 통신을 활용했습니다.  
+javascript 및 dom 조작을 익히기 위해 영화관 좌석 예매 기능을 구현했습니다.  
+반응형 웹을 이해하고, 구현했습니다.
+  
 - 기능
   - 영화관 좌석 예매
   - 박스오피스 날짜 검색
