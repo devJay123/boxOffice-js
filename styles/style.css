@@ -83,7 +83,8 @@ header .logo {
   background-color: #f4ce14;
 }
 .slide ul.slide_container::-webkit-scrollbar {
-  display: none; /* Chrome , Safari , Opera */
+  /* display: none;  */
+  /* Chrome , Safari , Opera */
 }
 .slide ul.slide_container li {
   display: inline-block;
