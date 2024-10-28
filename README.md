@@ -10,7 +10,8 @@ javascript 및 dom 조작을 익히기 위해 영화관 좌석 예매 기능을 
   - 박스오피스 일별/주간별 조회
   - 모든 영화 목록 조회
   
-https://morest-js-boxoffice.netlify.app/
+https://morest-js-boxoffice.netlify.app/  
+(배포중단)
   
 ## 영화진흥위원회 open api 사용.  
 사용 목적  
